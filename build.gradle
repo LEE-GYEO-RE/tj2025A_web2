@@ -1,3 +1,4 @@
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.5'
@@ -25,13 +26,15 @@ repositories {
 }
 
 dependencies {
-    // [1] 스프링 우베
+    // [1] 스프링 웹
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    // [2] 룸북
+    // [2] 롬복
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    // [3] mysal jdbc
+    // [3] mysql jdbc
     runtimeOnly 'com.mysql:mysql-connector-j'
+    // [4] websocket
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
 }
 
 tasks.named('test') {

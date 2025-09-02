@@ -13,3 +13,5 @@ INSERT INTO products (product_name, stock_quantity) VALUES
 ('게이밍 키보드', 30),
 ('기계식 마우스', 8),
 ('휴대용 충전기', 15);
+
+select * from products;
