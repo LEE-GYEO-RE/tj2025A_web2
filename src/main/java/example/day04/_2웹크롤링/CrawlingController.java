@@ -15,8 +15,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class CrawlingController {
 
-
     private final CrawlingService crawlingService;
+
     // 1. 뉴스
     @GetMapping("/craw1")
     public List<String> task1(){
@@ -29,5 +29,10 @@ public class CrawlingController {
         return crawlingService.task2();
     }
 
+    // 3. 날씨 정보
+    @GetMapping("/craw3")
+    public Map<String , String > task3(){
+        return crawlingService.task3();
+    }
 
 } // class e
