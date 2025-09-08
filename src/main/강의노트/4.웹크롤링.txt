@@ -31,7 +31,7 @@
                Document document = Jsoup.connect( 크롤링할 웹주소 ).get()
 
             2) 특정한 마크업 가져오기
-               1개일때 : Element element = document.select( "css선택자" );
+               1개일때 : Element element = document.selectFirst( "css선택자" );
                     예] <a href=""> 부평역 </a>
                여러개일때 : Elements elements = document.select( "css선택자" ); + 반복문
                     예] <a href=""> 부평역 </a> , <a href=""> 부천역 </a>

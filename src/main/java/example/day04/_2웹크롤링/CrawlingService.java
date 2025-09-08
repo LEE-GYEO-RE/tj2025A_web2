@@ -94,11 +94,13 @@ public class CrawlingService {
     public Map<String,String > task3(){
         Map<String,String> map = new HashMap<>(); // 2-1 날씨 정보를 저장할 Map
         try {
-            String URL = "https://weather.daum.net/";
+            String URL = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EB%B6%80%ED%8F%89%EA%B5%AC%EB%82%A0%EC%94%A8&ackey=pn5jyi1h";
             Document document = Jsoup.connect(URL).get();
             // 온도 : .info_weather .num_deg
-            Elements elements = document.select(".info_weather .num_deg");
+            Elements elements = document.select(".weather_info .temperature_text ");
             System.out.println("elements = " + elements);
+            map.put("현재온도" , elements.get(0).text());
+            map.put("예측온도" , elements.get(1).text());
 
         }catch (Exception e){
             System.out.println(e);
