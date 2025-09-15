@@ -36,4 +36,4 @@ public interface BatisMapper {
             " #{ kor } , math = #{ math } where sno = #{ sno } ")
     int update( StudentDto studentDto );
 
-} // inter e
+} // class e
