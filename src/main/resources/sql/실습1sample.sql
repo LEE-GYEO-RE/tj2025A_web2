@@ -33,5 +33,6 @@ INSERT INTO student (name, kor, math) VALUES ('이영희', 92, 95);
 INSERT INTO student (name, kor, math) VALUES ('박지민', 70, 65);
 INSERT INTO student (name, kor, math) VALUES ('최유리', 88, 82);
 
+
 select * from products;
 select * from student;
