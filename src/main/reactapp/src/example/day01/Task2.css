@@ -1,0 +1,17 @@
+
+
+.products{
+    display: flex;
+    
+}
+.products ul{
+    list-style: none;
+    text-align: left;
+    margin: 10px;
+    padding: auto;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+.products li{
+    padding-right: 30px;
+}

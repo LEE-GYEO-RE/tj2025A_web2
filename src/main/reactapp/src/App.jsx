@@ -1,21 +1,17 @@
 
-
+// 함수 == 컴포넌트 == 새로운 마크업 만들기 <div2>
 function App() {
-
-  const b = "ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ"
-  let a = 10;
+  // js code start
+  // ~~~~~
+  // js code end
   return (
     <>
       <h1> 최초 랜더링 하는 곳 </h1>
-      <div>
-        {a}
-        <div>
-         ㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗㅗ
-        </div>
-        {b}
-      </div>
+
     </>
   )
-}
+  
+} // func e
 
-export default App
+// 다른 js파일에서 함수를 import 할 수 있도록 하는 export
+export default App;
