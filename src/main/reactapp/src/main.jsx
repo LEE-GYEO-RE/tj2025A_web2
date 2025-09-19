@@ -51,4 +51,8 @@ import Component8 from './example/day03/Component8.jsx';
 import Component9 from './example/day03/Component9.jsx';
 // create.render(<Component9/>)
 import Component10 from './example/day03/Component10.jsx';
-create.render(<Component10/>)
+// create.render(<Component10/>)
+
+// 평가 5
+import Movie from './exam5/Movie.jsx';
+create.render(<Movie/>)
