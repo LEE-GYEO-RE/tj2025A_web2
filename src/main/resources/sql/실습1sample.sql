@@ -172,3 +172,26 @@ INSERT INTO board (bcontent, bwriter) VALUES ('오늘도 화이팅!', '리사');
 INSERT INTO board (bcontent, bwriter) VALUES ('운전 조심하세요~', '태연');
 
 select * from board;
+
+-- ----------------실습 5 ----------------
+create table members(
+	mno int auto_increment ,
+    name varchar(100) not null ,
+    phone varchar(100) not null ,
+    age int not null ,
+    constraint primary key(mno)
+);
+
+insert into members( name , phone , age ) values
+( "유재석" , "010-1111-2222" , 51 ),
+( "강호동" , "010-2222-3333" , 53 ),
+( "신동엽" , "010-3333-4444" , 52 ),
+( "김종국" , "010-4444-5555" , 48 ),
+( "하하"   , "010-5555-6666" , 46 ),
+( "이효리" , "010-6666-7777" , 45 ),
+( "송은이" , "010-7777-8888" , 52 ),
+( "김숙"   , "010-8888-9999" , 49 ),
+( "박명수" , "010-9999-0000" , 55 ),
+( "정형돈" , "010-1010-2020" , 47 );
+
+select * from members;
