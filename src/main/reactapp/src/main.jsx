@@ -63,4 +63,8 @@ import Movie from './exam5/Movie.jsx';
 import Component11 from './example/day04/Component11.jsx';
 // create.render(<Component11/>)
 import Component12 from './example/day04/Component12.jsx';
-create.render(<Component12/>)
+// create.render(<Component12/>)
+
+// day 04 Task6
+import Task6 from './example/day04/Task6.jsx';
+create.render(<Task6/>)
