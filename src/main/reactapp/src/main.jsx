@@ -45,7 +45,7 @@ import Task3 from './example/day02/Task3.jsx';
 import Task4 from './example/day02/Task4.jsx';
 // create.render(<Task4 />)
 import Task5 from './example/day03/Task5.jsx';
-create.render(<Task5/>)
+// create.render(<Task5/>)
 
 // day 03
 import Component8 from './example/day03/Component8.jsx';
@@ -58,3 +58,9 @@ import Component10 from './example/day03/Component10.jsx';
 // 평가 5
 import Movie from './exam5/Movie.jsx';
 // create.render(<Movie/>)
+
+// day 04
+import Component11 from './example/day04/Component11.jsx';
+// create.render(<Component11/>)
+import Component12 from './example/day04/Component12.jsx';
+create.render(<Component12/>)

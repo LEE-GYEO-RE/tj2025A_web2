@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import './Movie.css';
+// import './Movie.css';
 
 export default function Movie( props ){
 
