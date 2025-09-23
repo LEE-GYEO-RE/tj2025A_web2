@@ -3,15 +3,12 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import Header from "./components/Header";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
 
 export default function App(props){
-
-    
-
-
 
 
     return(<>

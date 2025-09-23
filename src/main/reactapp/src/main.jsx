@@ -87,6 +87,10 @@ import Component13 from './example/day05/Component13.jsx';
 // day05 실습7
 import App from './example/day05/실습7/App.jsx';
 import { Provider } from 'react-redux';
+import store from './example/day05/실습7/store/store.jsx';
 create.render(
+    // [1] 내가 만든 store를 root 컴포넌트에 공급하여 모든 컴포넌트가 사용할 수 있도록 전역변수로 지정
+    <Provider store={ store } >
         <App/>
+    </Provider>    
 );
