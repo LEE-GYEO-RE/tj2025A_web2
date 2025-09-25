@@ -24,7 +24,7 @@ public class TransService {
     }
 
     // 2.
-    @Transactional // 만약 지정 함수내 예외( RuntimeException 실행예외    ) 발생하면 함수 내 SQL 모두 취소
+    @Transactional // 만약 지정 함수내 예외( RuntimeException 실행예외 ) 발생하면 함수 내 SQL 모두 취소
     public boolean transfer(Map<String , Object> transInfo){
 
         int money = Integer.parseInt(String.valueOf(transInfo.get("money")));
