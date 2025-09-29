@@ -69,7 +69,7 @@ export default function Component14() {
             1. CSS 파일 생성 --> CSS 파일 적용할 컴포넌트에서 import 'css 파일 경로'
             2. CSS 객체 --> JSX에서 객체유형으로 CSS 작성 <컴포넌트명 style={ { CSS 속성명 : 값 , CSS 속성명 : 값 } } />
                 주의할점 : - 하이푼 쓰면 안되고 , 카멜표기법 써야함
-                 
+                 git test
     */
 
 
