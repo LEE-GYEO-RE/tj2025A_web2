@@ -100,18 +100,22 @@ import Component13 from './example/day05/Component13.jsx';
 // );
 
 // day 06 실습8
-import App from './example/day06/App.jsx'
-import { Provider } from 'react-redux';
-import store , { persistor } from './example/day06/store/store.jsx';
-import { PersistGate } from 'redux-persist/integration/react';
-create.render(  
-    <Provider store={store}>
-        <PersistGate loading = {null} persistor={ persistor }>
-            <App/>
-        </PersistGate>
-    </Provider>    
-)
+// import App from './example/day06/App.jsx'
+// import { Provider } from 'react-redux';
+// import store , { persistor } from './example/day06/store/store.jsx';
+// import { PersistGate } from 'redux-persist/integration/react';
+// create.render(  
+//     <Provider store={store}>
+//         <PersistGate loading = {null} persistor={ persistor }>
+//             <App/>
+//         </PersistGate>
+//     </Provider>    
+// )
 
 // day 07 
 // import Component14 from './example/day07/Component14.jsx';
 // create.render(<Component14/>)
+
+// day 08
+import Component15 from './example/day08/Component15.jsx';
+create.render(<Component15/>)
