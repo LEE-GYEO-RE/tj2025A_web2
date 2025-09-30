@@ -15,3 +15,5 @@
             logging.level.root = 레벨
         2) 특정 패키지 에서만 설정 , 패키지명은 [java] 폴더 이하 경로이다. < 한글 패키지 미지원 >
             logging.level.패키지명.패키지명 = 레벨
+
+            git test
