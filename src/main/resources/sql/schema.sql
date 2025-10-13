@@ -1,4 +1,5 @@
 -- --------------------------------------- 실습1 ----------------------------------------
+DROP TABLE if exists products;
 CREATE TABLE products (
     product_id INT PRIMARY KEY AUTO_INCREMENT, -- 상품 ID (자동 증가)
     product_name VARCHAR(255) NOT NULL,        -- 상품명
@@ -7,6 +8,7 @@ CREATE TABLE products (
 
 -- --------------------------------------- day06 example ----------------------------------------
 -- 학생 테이블
+DROP TABLE if exists student;
 CREATE TABLE student (
     sno INT AUTO_INCREMENT,              -- 학생 번호 (자동 증가)
     name VARCHAR(50) NOT NULL,           -- 이름
@@ -16,6 +18,7 @@ CREATE TABLE student (
 );
 
 -- --------------------------------------- day07 boardService13 ----------------------------------------
+DROP TABLE if exists board;
 create table board(
     bno int auto_increment ,
     bcontent longtext not null ,
@@ -24,6 +27,7 @@ create table board(
 );
 
 -- --------------------------------------- day09 trans ----------------------------------------
+DROP TABLE if exists trans;
 CREATE TABLE trans(
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -31,6 +35,8 @@ CREATE TABLE trans(
 );
 
 -- --------------------------------------- 실습3  ----------------------------------------
+DROP TABLE if exists rentals; 
+DROP TABLE if exists books;
 -- 1. 책 테이블
 CREATE TABLE books (
     id INT NOT NULL AUTO_INCREMENT ,
