@@ -52,6 +52,27 @@ public class XmlController {
         return ResponseEntity.ok(true);
     }
 
+    // 6. if 동적 쿼리 1
+    @GetMapping("/query2")
+    public ResponseEntity<List<StudentDto>> query2( @RequestParam int kor ){
+        List<StudentDto> result = xmlMapper.query2(kor);
+        return ResponseEntity.ok(result);
+    }
+
+    // 7. if 동적 쿼리 2
+    @GetMapping("/query3")
+    public ResponseEntity<List<StudentDto>> query3( @RequestParam String name , int math ){
+        List<StudentDto> result = xmlMapper.query3( name , math );
+        return ResponseEntity.ok(result);
+    }
+
+    // 8. forEach 동적 쿼리
+    @PostMapping("/all")
+    public ResponseEntity<Integer> saveAll( @RequestBody List<StudentDto> dto ){
+        int result = xmlMapper.saveAll(dto);
+        return ResponseEntity.ok(result);
+    }
+
 
 
 } // class e
