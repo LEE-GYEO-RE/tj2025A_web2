@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- XML 이란? 마크업 이용한 데이터 저장(설정)/전달(매핑)/교환(API) 마크업언어 -->
+<!-- HTML : 마크업 이용한 웹페이지 마크업언어 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- XML 파일내 mybatis 라이브러리 설정 -->
+
+<mapper namespace="example.실습.실습4.XmlMapper">
+
+    <!-- [1] 책 등록 -->
+    <insert id="addBook" parameterType="example.실습.실습4.BookDto" useGeneratedKeys="true" keyProperty="id">
+        insert into books(title , stock)
+        values( #{title} , #{stock});
+
+    </insert>
+
+    <!-- [2] 대출 기록 검색 조회 -->
+    <select id="loanRecord" resultType="example.실습.실습4.BookDto">
+        select * from rentals
+        <where>
+            <if test="member != null">
+                and member like concat( '%' , #{member} , '%' )
+            </if>
+
+            <if test="book_id != null">
+                and book_id like concat( '%' , #{book_id} , '%' )
+            </if>
+
+        </where>
+
+    </select>
+
+    <!-- [3] 책 일괄 등록 -->
+    <insert id="addAll" parameterType="List" useGeneratedKeys="true" keyProperty="id">
+        insert into books( title , stock )
+        values
+            <foreach collection="list" item="books" separator=",">
+                ( #{books.title} , #{books.stock})
+            </foreach>
+    </insert>
+
+</mapper>
