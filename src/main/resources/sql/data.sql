@@ -12,6 +12,8 @@ INSERT INTO student (name, kor, math) VALUES ('김철수', 78, 88);
 INSERT INTO student (name, kor, math) VALUES ('이영희', 92, 95);
 INSERT INTO student (name, kor, math) VALUES ('박지민', 70, 65);
 INSERT INTO student (name, kor, math) VALUES ('최유리', 88, 82);
+INSERT INTO student (name, kor, math) VALUES ('박지민', 70, 65);
+
 
 -- --------------------------------------- day07 boardService13 ----------------------------------------
 # 샘플
@@ -68,5 +70,10 @@ INSERT INTO books (id, title, stock) VALUES (2, '스프링 인 액션', 2);
 INSERT INTO books (id, title, stock) VALUES (3, '토비의 스프링', 1);
 INSERT INTO books (id, title, stock) VALUES (4, '리액트 교과서', 5);
 
+
 -- 4. 샘플 데이터 (대출 기록)
 INSERT INTO rentals (id, book_id, member) VALUES (1, 1, '홍길동');
+
+
+select * from products;
+select * from student;
