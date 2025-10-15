@@ -1,4 +1,4 @@
-package example.실습.실습5;
+package example.실습.실습0;
 
 import lombok.*;
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- XML 이란? 마크업 이용한 데이터 저장(설정)/전달(매핑)/교환(API) 마크업언어 -->
+<!-- HTML : 마크업 이용한 웹페이지 마크업언어 -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- XML 파일내 mybatis 라이브러리 설정 -->
+
+<mapper namespace="example.실습.실습5.BookXmlMapper">
+
+
+    <!-- books 테이블에 가격 필드 추가 -->
+    <update id="alter1" parameterType="int">
+        alter table books add column price int;
+    </update>
+
+    <!-- books 테이블에 title 책 필드 수정 -->
+
+    <!-- 평균 재고보다 많은 재고 가진 도서 조회 -->
+
+    <!-- 가장 많이 대출한 도서 조회 -->
+
+
+</mapper>

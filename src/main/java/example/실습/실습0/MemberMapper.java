@@ -1,4 +1,4 @@
-package example.실습.실습5;
+package example.실습.실습0;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
