@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/alter")
@@ -12,6 +13,8 @@ import java.util.List;
 public class BookXmlController {
 
     private final BookXmlService bookXmlService;
+
+    // ==== 실습 5 ====
 
     // 1. price 필드 추가
     @PutMapping("/price")
@@ -37,6 +40,34 @@ public class BookXmlController {
     @GetMapping("/most")
     public BookDto query2() {
         return bookXmlService.query2();
+    } // func e
+
+    // ==== 실습 6 ====
+
+    // 1. view1 생성
+    @PutMapping("/view1")
+    public String view1(){
+        bookXmlService.view1();
+        return " view1 생성 ";
+    } // func e
+
+    // 2. view2 생성
+    @PutMapping("/view2")
+    public String view2(){
+        bookXmlService.view2();
+        return "view2 생성";
+    } // func e
+
+    // 3. view1 조회
+    @GetMapping("/selectview1")
+    public Map<String , Object>selectView1(){
+        return bookXmlService.selectView1();
+    } // func e
+
+    // 4. view2 조회
+    @GetMapping("/selectview2")
+    public List<BookDto> selectView2(){
+        return bookXmlService.selectView2();
     } // func e
 
 

@@ -129,5 +129,5 @@ INSERT INTO rentals (id, book_id, member) VALUES (1, 1, '홍길동');
 -- 5. 확인용 조회 쿼리
 SELECT * FROM books;
 SELECT * FROM rentals;
-
+desc books;
 select * from student;

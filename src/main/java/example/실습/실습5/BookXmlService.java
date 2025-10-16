@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +16,7 @@ public class BookXmlService {
 
     private final BookXmlMapper bookXmlMapper;
 
+    // ==== 실습 5 ====
 
     // 1. ALTER - 컬럼 추가
     public void alter1() {
@@ -33,6 +36,28 @@ public class BookXmlService {
     // 4. 가장 많이 대출된 도서
     public BookDto query2() {
         return bookXmlMapper.query2();
+    } // func e
+
+    // ==== 실습 6 ====
+
+    // 1. view1 생성
+    public void view1(){
+        bookXmlMapper.view1();
+    } // func e
+
+    // 2. view2 생성
+    public void view2(){
+        bookXmlMapper.view2();
+    } // func e
+
+    // 3. view1 조회
+    public Map<String , Object >selectView1(){
+        return bookXmlMapper.selectView1();
+    } // func e
+
+    // 4. view2 조회
+    public List<BookDto> selectView2(){
+        return bookXmlMapper.selectView2();
     } // func e
 
 

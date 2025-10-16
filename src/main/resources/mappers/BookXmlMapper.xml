@@ -34,5 +34,37 @@
         (SELECT book_id FROM rentals GROUP BY book_id ORDER BY COUNT(*) DESC LIMIT 1 );
     </select>
 
+    <!-- 실습 6 -->
+    <!-- 1. 대출 기록 상세 뷰 생성 -->
+    <update id="view1">
+        create or replace view rental_recode as
+        select
+        r.id , r.book_id , b.title , b.stock , r.member , r.rent_date , r.return_date
+        from rentals r
+        inner join books b on r.book_id = b.id;
+    </update>
+
+    <!-- 2. 평균 재고보다 많은 재고를 가진 도서 조회 뷰 생성 -->
+    <update id="view2">
+        create or replace view high_stock as
+        select
+            id , title , stock
+        from books
+        where stock > (select avg(stock) from books);
+
+    </update>
+
+    <!-- 3. 대출기록 상세 뷰 조회 -->
+    <select id="selectView1" resultType="map">
+        select * from rental_recode;
+
+    </select>
+
+    <!-- 4. 평균 재고보다 많은 재고를 가진 도서 조회 뷰 조회 -->
+    <select id="selectView2" resultType="example.실습.실습5.BookDto">
+        select * from high_stock;
+
+    </select>
+
 
 </mapper>
