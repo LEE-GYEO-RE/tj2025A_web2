@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -13,22 +15,25 @@ public class BookXmlService {
     private final BookXmlMapper bookXmlMapper;
 
 
-    // books 테이블에 가격 필드 추가
-    public void alter1(){
-        try {
+    // 1. ALTER - 컬럼 추가
+    public void alter1() {
         bookXmlMapper.alter1();
-            System.out.println("BookXmlService.alter1");
-        }catch (Exception e ){
-        e.printStackTrace();
-        }
-    }
+    } // func e
 
+    // 2. ALTER - 컬럼 수정
+    public void alter2() {
+        bookXmlMapper.alter2();
+    } // func e
 
-    // books 테이블에 title 책 필드 수정
+    // 3. 평균 재고보다 많은 도서
+    public List<BookDto> query1() {
+        return bookXmlMapper.query1();
+    } // func e
 
-    // 평균 재고보다 많은 재고 가진 도서 조회
-
-    // 가장 많이 대출한 도서 조회
+    // 4. 가장 많이 대출된 도서
+    public BookDto query2() {
+        return bookXmlMapper.query2();
+    } // func e
 
 
 } // class e

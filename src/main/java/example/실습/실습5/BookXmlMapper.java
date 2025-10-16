@@ -7,16 +7,13 @@ import java.util.List;
 @Mapper
 public interface BookXmlMapper {
 
-    // books 테이블에 가격 필드 추가
+
+    // [1] 테이블 수정 (ALTER)
     void alter1();
+    void alter2();
 
-    // books 테이블에 title 책 필드 수정
-    Boolean alter2(BookDto dto);
-
-    // 평균 재고보다 많은 재고 가진 도서 조회
-    List<BookDto> select1(BookDto dto);
-
-    // 가장 많이 대출한 도서 조회
-    RentalsDto select2();
+    // [2] 서브쿼리
+    List<BookDto> query1(); // 평균 재고보다 많은 도서
+    BookDto query2();       // 가장 많이 대출된 도서
 
 } // inter e

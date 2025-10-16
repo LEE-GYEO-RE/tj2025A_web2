@@ -9,16 +9,30 @@
 <mapper namespace="example.실습.실습5.BookXmlMapper">
 
 
-    <!-- books 테이블에 가격 필드 추가 -->
-    <update id="alter1" parameterType="int">
-        alter table books add column price int;
+    <!-- 1. 책 테이블에 price 컬럼 추가 -->
+    <update id="alter1">
+        ALTER TABLE books ADD COLUMN price INT;
     </update>
 
-    <!-- books 테이블에 title 책 필드 수정 -->
+    <!-- 2. title 필드를 longtext 로 변경 -->
+    <update id="alter2">
+        ALTER TABLE books MODIFY COLUMN title LONGTEXT;
+    </update>
 
-    <!-- 평균 재고보다 많은 재고 가진 도서 조회 -->
+    <!-- 3. 평균 재고보다 많은 재고 도서 조회 -->
+    <select id="query1" resultType="example.실습.실습5.BookDto">
+        SELECT *
+        FROM books
+        WHERE stock > (SELECT AVG(stock) FROM books);
+    </select>
 
-    <!-- 가장 많이 대출한 도서 조회 -->
+    <!-- 4. 가장 많이 대출된 도서 조회 -->
+    <select id="query2" resultType="example.실습.실습5.BookDto">
+        SELECT b.id, b.title, b.stock, b.price
+        FROM books b
+        WHERE b.id =
+        (SELECT book_id FROM rentals GROUP BY book_id ORDER BY COUNT(*) DESC LIMIT 1 );
+    </select>
 
 
 </mapper>
