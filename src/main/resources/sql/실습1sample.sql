@@ -131,3 +131,8 @@ SELECT * FROM books;
 SELECT * FROM rentals;
 desc books;
 select * from student;
+
+
+-- view 조회
+select * from rental_recode;
+select * from high_stock;
