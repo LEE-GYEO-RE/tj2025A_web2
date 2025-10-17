@@ -42,7 +42,7 @@ ORDER BY ED.ID ASC;
 
 ========================================================================================
 2025-10-16
-1. [SELECT] 동물의 아이디와 이름
+5. [SELECT] 동물의 아이디와 이름
 https://school.programmers.co.kr/learn/courses/30/lessons/59403
 -- 동물 보호소에 들어온 모든 동물의 아이디와 이름을
 -- ANIMAL_ID순으로 조회하는 SQL문을 작성해주세요.
@@ -50,7 +50,7 @@ https://school.programmers.co.kr/learn/courses/30/lessons/59403
 -- (2) 정렬 : ANIMAL_ID순으로 ( ASC 오름차순 )
 SELECT ANIMAL_ID , NAME FROM ANIMAL_INS ORDER BY ANIMAL_ID ASC;
 
-2. [SELECT] 과일로 만든 아이스크림 고르기
+6. [SELECT] 과일로 만든 아이스크림 고르기
 https://school.programmers.co.kr/learn/courses/30/lessons/133025
 -- FIRST_HALF 테이블
 -- 출하 번호, 아이스크림 맛(PK), 상반기 아이스크림 총주문량
@@ -77,7 +77,7 @@ SELECT f.FLAVOR FROM FIRST_HALF f inner join ICECREAM_INFO i
     where f.TOTAL_ORDER >= 3000 and i.INGREDIENT_TYPE = 'fruit_based'
     order by f.TOTAL_ORDER desc;
 
-3. [SELECT] 강원도에 위치한 생산공장 목록 출력하기
+7. [SELECT] 강원도에 위치한 생산공장 목록 출력하기
 https://school.programmers.co.kr/learn/courses/30/lessons/131112
 -- FOOD_FACTORY
 -- 공장 ID, 공장 이름, 주소, 전화번호
@@ -87,3 +87,6 @@ https://school.programmers.co.kr/learn/courses/30/lessons/131112
 select FACTORY_ID , FACTORY_NAME , ADDRESS from FOOD_FACTORY
     where ADDRESS like '강원도%'
     order by FACTORY_ID asc;
+
+========================================================================================
+2025-10-17
