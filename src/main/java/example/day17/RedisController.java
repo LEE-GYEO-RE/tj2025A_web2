@@ -132,6 +132,7 @@ public class RedisController {
         if(result == null ) {
             return ResponseEntity.ok().body("인증 실패 : 인증 만료 또는 코드 불일치");
         }else if (result.equals(code) ) {
+            redisTemplate.delete(key); // 인증성공하면 인증코드 삭제
             return ResponseEntity.ok().body("인증 성공!");
         }else {
             return ResponseEntity.ok().body("인증실패");
