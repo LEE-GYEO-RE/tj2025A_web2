@@ -88,6 +88,9 @@ public class UserController {
         return ResponseEntity.ok().body(null); // 비로그인 상태
     } // func e
 
+    // 세션 : 서버에 저장하는 임시 저장소 이므로 서버가 종료되면 사라진다.
+    // 쿠키 : 클라이언트에 저장하는 임시 저장소 이므로 서버가 종료되도 유지된다.
+
     // 중복검사
 
     // 비밀번호 수정
