@@ -26,6 +26,8 @@ public interface UserMapper {
     // 로그아웃
 
     // 내정보
+    @Select("select uno , uid , uname , uphone , urole , udate from users where uid = #{uid}")
+    UserDto myInfo(String uid);
 
     // 중복검사
 

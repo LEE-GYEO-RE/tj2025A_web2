@@ -54,6 +54,10 @@ public class UserService {
     // 로그아웃
 
     // 내정보
+    public UserDto myInfo(String uid ){
+        UserDto result = userMapper.myInfo(uid);
+        return result;
+    } // func e
 
     // 중복검사
 

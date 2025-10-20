@@ -1,6 +1,7 @@
 package web2.controller;
 
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -45,14 +46,47 @@ public class UserController {
             // Cookie cookie = new Cookie("쿠키명" , 값 );
             // response.addCookie(생성한 쿠키);
             Cookie cookie = new Cookie("loginUser" , result.getUid());
+            cookie.setHttpOnly(true); // .setHttpOnly(true) : 무조건 http 에서만 사용. JS로 접근 불가능
+            cookie.setSecure(false); // .setSecure(true) : http로 탈취 하더라도 암호화 , 단 https 에서만 가능
+            cookie.setPath("/"); // 쿠키에 접근할 수 있는 경로
+            cookie.setMaxAge(60*60); // 쿠키 유효시간 , 1시간
             response.addCookie(cookie); // 생성한 쿠키를 클라이언트에게 반환한다.
         }
         return ResponseEntity.ok(result);
     } // func e
 
     // 로그아웃
+    @DeleteMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletResponse response){
+        Cookie cookie = new Cookie("loginUser" , null);
+        cookie.setHttpOnly(true);
+        cookie.setSecure(false);
+        cookie.setPath("/");
+        cookie.setMaxAge(0); // 0 이면 즉시 삭제하라는 뜻
+
+        response.addCookie(cookie); // 동일한 쿠키명으로 null 저장하면 기존 쿠키명 사라짐
+
+        return ResponseEntity.ok(true);
+
+    } // func e
 
     // 내정보
+    @GetMapping("/info")
+    public ResponseEntity<UserDto> myInfo(HttpServletRequest request){ // 쿠키 활용한 로그인상태 확인
+        // 클라이언트에 저장된 모든 쿠키 가져오기
+        Cookie[] cookies = request.getCookies();
+        // 반복문 이용한 특정 쿠키명 찾기
+        if( cookies != null ){
+            for( Cookie cookie : cookies ){ // 하나씩 쿠키들을 반복하여
+                if( cookie.getName().equals("loginUser")){ // "loginUser" 쿠키명과 같으면
+                    String uid = cookie.getValue(); // 쿠키의 저장된 값 반환 = 지금은 uid
+                    UserDto result = userService.myInfo(uid);
+                    return ResponseEntity.ok().body(result); // 로그인 상태
+                }
+            } // for e
+        } // if e
+        return ResponseEntity.ok().body(null); // 비로그인 상태
+    } // func e
 
     // 중복검사
 
