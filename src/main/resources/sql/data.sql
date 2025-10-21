@@ -85,6 +85,7 @@ VALUES
 -- guest / 1234
 ('guest', '$2a$10$69bMrChodVYxOcvM/cUo7evsho3hw6YBJT9yepHudwBlIvi7KlV0.', '손님', '010-0000-0000', 'USER');
 
+select * from users;
 
 select * from products;
 select * from student;
