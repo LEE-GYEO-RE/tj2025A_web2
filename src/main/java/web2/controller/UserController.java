@@ -9,6 +9,7 @@ import org.apache.catalina.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import web2.model.dto.UserDto;
+import web2.service.JwtService;
 import web2.service.UserService;
 
 @RestController
@@ -17,6 +18,7 @@ import web2.service.UserService;
 public class UserController {
 
     private final UserService userService;
+    private final JwtService jwtService;
 
     // 회원가입
     @PostMapping("/signup")
@@ -45,7 +47,10 @@ public class UserController {
             // 그래서 안전장치가 필요하다
             // Cookie cookie = new Cookie("쿠키명" , 값 );
             // response.addCookie(생성한 쿠키);
-            Cookie cookie = new Cookie("loginUser" , result.getUid());
+            // Cookie cookie = new Cookie("loginUser" , result.getUid());
+
+            // 쿠키에 저장하는 회원정보르르 토큰으로 저장하는 걸로 변경
+            Cookie cookie = new Cookie("loginUser" , jwtService.loginToken(result.getUid(), result.getUrole() ));
             cookie.setHttpOnly(true); // .setHttpOnly(true) : 무조건 http 에서만 사용. JS로 접근 불가능
             cookie.setSecure(false); // .setSecure(true) : http로 탈취 하더라도 암호화 , 단 https 에서만 가능
             cookie.setPath("/"); // 쿠키에 접근할 수 있는 경로
@@ -79,9 +84,17 @@ public class UserController {
         if( cookies != null ){
             for( Cookie cookie : cookies ){ // 하나씩 쿠키들을 반복하여
                 if( cookie.getName().equals("loginUser")){ // "loginUser" 쿠키명과 같으면
-                    String uid = cookie.getValue(); // 쿠키의 저장된 값 반환 = 지금은 uid
-                    UserDto result = userService.myInfo(uid);
-                    return ResponseEntity.ok().body(result); // 로그인 상태
+                    // String uid = cookie.getValue(); // 쿠키의 저장된 값 반환 = 지금은 uid
+
+                    // 쿠키에 저장된 토큰 반환 하기
+                    String token = cookie.getValue(); // 쿠키의 저장된 토큰 반환
+                    boolean verify = jwtService.loginTokenVerify(token); // 토큰 검증
+                    if(verify){
+                        String uid = jwtService.getUid(token); // 토큰에 저장된 클레임(회원아이디) 추출
+                        UserDto result = userService.myInfo(uid);
+                        return ResponseEntity.ok().body(result);
+                    }
+                    return ResponseEntity.ok().body(null);
                 }
             } // for e
         } // if e
