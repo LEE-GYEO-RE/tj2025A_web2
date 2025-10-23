@@ -13,7 +13,7 @@ import web2.service.JwtService;
 import web2.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -24,6 +24,7 @@ public class UserController {
     @PostMapping("/signup")
     public ResponseEntity<Integer> signup(@RequestBody UserDto userDto){
         int result = userService.signup(userDto);
+        System.out.println("userDto = " + userDto.getUid());
         return ResponseEntity.ok().body(result);
     } // func e
 

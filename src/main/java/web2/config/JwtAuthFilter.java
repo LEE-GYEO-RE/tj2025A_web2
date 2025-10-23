@@ -1,6 +1,7 @@
 package web2.config;
 
 import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import web2.service.JwtService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Component // 빈 등록
@@ -26,7 +28,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     // [2] 기존 시큐리티 방식의 필터 커스텀 , 상속받기( OncePerRequestFilter ) , 물려받기
     @Override
-    protected void doFilterInternal(HttpServletRequest request , HttpServletResponse response , FilterChain filterChain){
+    protected void doFilterInternal(HttpServletRequest request , HttpServletResponse response , FilterChain filterChain) throws IOException , ServletException {
 
 
         String token = null;
@@ -55,6 +57,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             SecurityContextHolder.getContext().setAuthentication(authToken);
 
         }
+        filterChain.doFilter(request , response);
 
     } // func e
 
