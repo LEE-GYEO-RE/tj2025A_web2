@@ -19,6 +19,8 @@ public class SecurityConfig {
     // 미리 만들어진 필터들이 다수... 그런 필터들을 커스텀(수정)/제외/끄기
 
     private final JwtAuthFilter jwtAuthFilter;
+    private final OAuth2SuccessHandler oAuth2SuccessHandler;
+
 
     // !! : HTTP 관련 필터들을 커스텀 , HTTP 요청과 응답 처리하는 웹 아키텍처
     @Bean // 빈 등록
@@ -49,10 +51,17 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
                 // [3-2] UsernamePasswordAuthenticationToken 을 개발자가 만든 토큰 대체
-        // security.addFilterBefore( 내가만든 토큰객체 필터 , UsernamePasswordAuthenticationToken.class);
+                // security.addFilterBefore( 내가만든 토큰객체 필터 , UsernamePasswordAuthenticationToken.class);
         security
                 .addFilterBefore( jwtAuthFilter , UsernamePasswordAuthenticationFilter.class);
 
+
+                // [4] OAuth2 로그인 필터 사용 설정
+        security
+                .oauth2Login( oauth -> oauth
+                        .loginPage("/oauth2/authorization") // 현재 서버의 로그인 페이지가 아닌 타사 로그인페이지 사용
+                        .successHandler(oAuth2SuccessHandler) // 타사 로그인 페이지에서 로그인 성공시 반환되는 클래스 정의
+                );
 
         // ===================== 완료 ===================== //
 

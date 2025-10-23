@@ -59,6 +59,23 @@ public class UserService {
         return result;
     } // func e
 
+
+    // oauth2 회원가입 구성
+    public UserDto oauth2UserSignup( String uid ,String name){
+        UserDto userDto = userMapper.login(uid);
+
+        if(userDto == null){
+            UserDto oauthUser = new UserDto();
+            oauthUser.setUid(uid);
+            oauthUser.setUpwd("null"); // 타사 패스워드라 없음
+            oauthUser.setUname(name);
+            oauthUser.setUrole("USER"); // 추후에 일반유저와 OAuth 유저 권한 구분 가능
+            userMapper.signup(oauthUser);
+            return oauthUser;
+        }
+        return null;
+    } // func e
+
     // 중복검사
 
     // 비밀번호 수정

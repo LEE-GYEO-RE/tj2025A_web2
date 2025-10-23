@@ -87,5 +87,8 @@ VALUES
 
 select * from users;
 
+SELECT * FROM users ORDER BY uno DESC;
+
+
 select * from products;
 select * from student;
