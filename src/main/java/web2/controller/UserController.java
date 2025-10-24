@@ -12,6 +12,9 @@ import web2.model.dto.UserDto;
 import web2.service.JwtService;
 import web2.service.UserService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
@@ -19,6 +22,9 @@ public class UserController {
 
     private final UserService userService;
     private final JwtService jwtService;
+
+    // 세션 : 서버에 저장하는 임시 저장소 이므로 서버가 종료되면 사라진다.
+    // 쿠키 : 클라이언트에 저장하는 임시 저장소 이므로 서버가 종료되도 유지된다.
 
     // 회원가입
     @PostMapping("/signup")
@@ -102,16 +108,24 @@ public class UserController {
         return ResponseEntity.ok().body(null); // 비로그인 상태
     } // func e
 
-    // 세션 : 서버에 저장하는 임시 저장소 이므로 서버가 종료되면 사라진다.
-    // 쿠키 : 클라이언트에 저장하는 임시 저장소 이므로 서버가 종료되도 유지된다.
 
-    // 중복검사
+    // 권한을 반환하는 컨트롤러
+    @GetMapping("/check")
+    public ResponseEntity<?> checkToken(@CookieValue(value = "loginUser" , required = false) String token){
 
-    // 비밀번호 수정
+        Map<String , Object> map = new HashMap<>();
 
-    // 회원탈퇴
+        if(token != null && jwtService.loginTokenVerify(token) ){ // 토큰 있으면서 유효하면
+            String urole = jwtService.getUrole(token);
+            map.put("isAuth" , true);
+            map.put("urole" , urole);
+            return ResponseEntity.status(200).body(map); // 유저가 로그인 했으면
+        }else {
+            map.put("isAuth" , false);
+            return ResponseEntity.status(403).body(map); // 유저가 로그인 안했으면
+        }
 
-
+    } // func e
 
 
 } // class e
