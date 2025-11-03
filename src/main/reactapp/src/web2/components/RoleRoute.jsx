@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Navigate , Outlet } from "react-router-dom";
+import axios from "axios";
 
 // 1. 서버로 부터 권한을 확인하여 해당 권한에 따른 컴포넌트를 제약
 function RoleRoute( props ) {
@@ -27,11 +29,18 @@ function RoleRoute( props ) {
     // useEffect : 컴포넌트의 생명주기에 따른 특정 작업 실행
     useEffect( () => { checkAuth();} , [])
 
-    return (
-        <>
-        
-        
-        </>
-    )
+
+    // 서버로 부터 권한을 못받았다면
+    if( auth.isAuth == null ) return <div> 권한 확인중... </div>
+
+    // 로그인(쿠키/토큰) 안했다면 로그인페이지 이동
+    if(auth.isAuth == false ) return <Navigate to = "/login"/>;
+
+    // 상위 컴포넌트(App.jsx) 로부터 전달받은 권한중에 서버가 전달한 권한이 없으면
+    if( !props.roles.includes( auth.urole)) return <Navigate to = "/forbidden"/>;
+
+
+    // 모든 권한이 통과되면 자식 컴포넌트 랜더링
+    return <Outlet/>;
 }
 export default RoleRoute;

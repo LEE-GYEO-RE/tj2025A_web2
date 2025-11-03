@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -63,6 +64,9 @@ public class SecurityConfig {
                         .successHandler(oAuth2SuccessHandler) // 타사 로그인 페이지에서 로그인 성공시 반환되는 클래스 정의
                 );
 
+                // [5] 시큐리티의 CORS 정책 설정
+        security
+                .cors( Customizer.withDefaults());
         // ===================== 완료 ===================== //
 
         return security.build(); // 커스텀 완료된 객체 반환
